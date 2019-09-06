@@ -8,12 +8,12 @@
 
 /* Begin PBXBuildFile section */
 		45CD1A932322915200FFA201 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45CD1A922322915200FFA201 /* AppDelegate.swift */; };
-		45CD1A952322915200FFA201 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45CD1A942322915200FFA201 /* ViewController.swift */; };
-		45CD1A982322915200FFA201 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 45CD1A962322915200FFA201 /* Main.storyboard */; };
 		45CD1A9B2322915200FFA201 /* WeatherApp_Sample.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 45CD1A992322915200FFA201 /* WeatherApp_Sample.xcdatamodeld */; };
 		45CD1A9D2322915300FFA201 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 45CD1A9C2322915300FFA201 /* Assets.xcassets */; };
 		45CD1AA02322915300FFA201 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 45CD1A9E2322915300FFA201 /* LaunchScreen.storyboard */; };
 		45CD1AAB2322915300FFA201 /* WeatherApp_SampleTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45CD1AAA2322915300FFA201 /* WeatherApp_SampleTests.swift */; };
+		45CD1ABD2322958900FFA201 /* WeatherViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45CD1ABB2322958900FFA201 /* WeatherViewController.swift */; };
+		45CD1ABE2322958900FFA201 /* WeatherViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 45CD1ABC2322958900FFA201 /* WeatherViewController.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -29,8 +29,6 @@
 /* Begin PBXFileReference section */
 		45CD1A8F2322915200FFA201 /* WeatherApp-Sample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "WeatherApp-Sample.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		45CD1A922322915200FFA201 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		45CD1A942322915200FFA201 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		45CD1A972322915200FFA201 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		45CD1A9A2322915200FFA201 /* WeatherApp_Sample.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = WeatherApp_Sample.xcdatamodel; sourceTree = "<group>"; };
 		45CD1A9C2322915300FFA201 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		45CD1A9F2322915300FFA201 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -38,6 +36,8 @@
 		45CD1AA62322915300FFA201 /* WeatherApp-SampleTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "WeatherApp-SampleTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		45CD1AAA2322915300FFA201 /* WeatherApp_SampleTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherApp_SampleTests.swift; sourceTree = "<group>"; };
 		45CD1AAC2322915300FFA201 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		45CD1ABB2322958900FFA201 /* WeatherViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherViewController.swift; sourceTree = "<group>"; };
+		45CD1ABC2322958900FFA201 /* WeatherViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WeatherViewController.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -79,13 +79,11 @@
 		45CD1A912322915200FFA201 /* WeatherApp-Sample */ = {
 			isa = PBXGroup;
 			children = (
-				45CD1A922322915200FFA201 /* AppDelegate.swift */,
-				45CD1A942322915200FFA201 /* ViewController.swift */,
-				45CD1A962322915200FFA201 /* Main.storyboard */,
-				45CD1A9C2322915300FFA201 /* Assets.xcassets */,
-				45CD1A9E2322915300FFA201 /* LaunchScreen.storyboard */,
-				45CD1AA12322915300FFA201 /* Info.plist */,
-				45CD1A992322915200FFA201 /* WeatherApp_Sample.xcdatamodeld */,
+				45CD1AB52322947C00FFA201 /* Model */,
+				45CD1AB62322948700FFA201 /* View */,
+				45CD1AB72322949100FFA201 /* Presenter */,
+				45CD1AB8232294E500FFA201 /* StartUp */,
+				45CD1AB9232294F400FFA201 /* Environment */,
 			);
 			path = "WeatherApp-Sample";
 			sourceTree = "<group>";
@@ -97,6 +95,56 @@
 				45CD1AAC2322915300FFA201 /* Info.plist */,
 			);
 			path = "WeatherApp-SampleTests";
+			sourceTree = "<group>";
+		};
+		45CD1AB52322947C00FFA201 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				45CD1ABA2322953A00FFA201 /* Entity */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		45CD1AB62322948700FFA201 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				45CD1ABB2322958900FFA201 /* WeatherViewController.swift */,
+				45CD1ABC2322958900FFA201 /* WeatherViewController.xib */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		45CD1AB72322949100FFA201 /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Presenter;
+			sourceTree = "<group>";
+		};
+		45CD1AB8232294E500FFA201 /* StartUp */ = {
+			isa = PBXGroup;
+			children = (
+				45CD1A922322915200FFA201 /* AppDelegate.swift */,
+				45CD1A9E2322915300FFA201 /* LaunchScreen.storyboard */,
+			);
+			path = StartUp;
+			sourceTree = "<group>";
+		};
+		45CD1AB9232294F400FFA201 /* Environment */ = {
+			isa = PBXGroup;
+			children = (
+				45CD1AA12322915300FFA201 /* Info.plist */,
+				45CD1A9C2322915300FFA201 /* Assets.xcassets */,
+			);
+			path = Environment;
+			sourceTree = "<group>";
+		};
+		45CD1ABA2322953A00FFA201 /* Entity */ = {
+			isa = PBXGroup;
+			children = (
+				45CD1A992322915200FFA201 /* WeatherApp_Sample.xcdatamodeld */,
+			);
+			path = Entity;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -181,8 +229,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				45CD1AA02322915300FFA201 /* LaunchScreen.storyboard in Resources */,
+				45CD1ABE2322958900FFA201 /* WeatherViewController.xib in Resources */,
 				45CD1A9D2322915300FFA201 /* Assets.xcassets in Resources */,
-				45CD1A982322915200FFA201 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -200,8 +248,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				45CD1A952322915200FFA201 /* ViewController.swift in Sources */,
 				45CD1A932322915200FFA201 /* AppDelegate.swift in Sources */,
+				45CD1ABD2322958900FFA201 /* WeatherViewController.swift in Sources */,
 				45CD1A9B2322915200FFA201 /* WeatherApp_Sample.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -225,14 +273,6 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		45CD1A962322915200FFA201 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				45CD1A972322915200FFA201 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		45CD1A9E2322915300FFA201 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -366,7 +406,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = LVR5UQEHBD;
-				INFOPLIST_FILE = "WeatherApp-Sample/Info.plist";
+				INFOPLIST_FILE = "$(SRCROOT)/WeatherApp-Sample/Environment/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -384,7 +424,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = LVR5UQEHBD;
-				INFOPLIST_FILE = "WeatherApp-Sample/Info.plist";
+				INFOPLIST_FILE = "$(SRCROOT)/WeatherApp-Sample/Environment/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
