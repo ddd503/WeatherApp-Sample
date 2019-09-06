@@ -10,8 +10,12 @@ import UIKit
 
 class WeatherViewController: UIViewController {
 
-    init() {
+    let presenter: WeatherViewPresenterInputs!
+
+    init(presenter: WeatherViewPresenterInputs) {
+        self.presenter = presenter
         super.init(nibName: String(describing: WeatherViewController.self), bundle: .main)
+        self.presenter.bind(view: self)
     }
 
     required init?(coder aDecoder: NSCoder) {
@@ -24,3 +28,5 @@ class WeatherViewController: UIViewController {
     }
 
 }
+
+extension WeatherViewController: WeatherViewPresenterOutputs {}
