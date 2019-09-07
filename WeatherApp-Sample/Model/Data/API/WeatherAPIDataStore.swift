@@ -8,17 +8,20 @@
 
 import Foundation
 
-struct WeatherAPIDataStore {
-    let baseURLString = "http://weather.livedoor.com/forecast/webservice/json/v1"
+protocol WeatherAPIDataStore {
+    func requestApi(urlRequest: URLRequest, completion: @escaping (Result<Data, Error>) -> ())
+    func createRequest(baseUrlString: String, method: String, parameters: [String: String]) -> URLRequest
+}
 
-    func requestApi(method: String = "GET", parameters: [String: String] = [:], completion: @escaping (Result<Data, Error>) -> ()) {
+struct WeatherAPIDataStoreImpl: WeatherAPIDataStore {
+    func requestApi(urlRequest: URLRequest, completion: @escaping (Result<Data, Error>) -> ()) {
         let session = URLSession(configuration: URLSessionConfiguration.default)
-        let urlRequest = createRequest(method: method, parameters: parameters)
+        let urlRequest = urlRequest
         APIClient().request(session: session, urlRequest: urlRequest, completion: completion)
     }
 
-    func createRequest(method: String, parameters: [String: String]) -> URLRequest {
-        var urlComponents = URLComponents(url: URL(string: baseURLString)!, resolvingAgainstBaseURL: true)!
+    func createRequest(baseUrlString: String, method: String, parameters: [String: String]) -> URLRequest {
+        var urlComponents = URLComponents(url: URL(string: baseUrlString)!, resolvingAgainstBaseURL: true)!
         urlComponents.queryItems = []
         parameters.forEach { (key, value) in
             let query = URLQueryItem(name: key, value: value)

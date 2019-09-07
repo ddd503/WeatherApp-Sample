@@ -24,9 +24,11 @@ class WeatherViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        presenter.viewDidLoad()
     }
 
 }
 
-extension WeatherViewController: WeatherViewPresenterOutputs {}
+extension WeatherViewController: WeatherViewPresenterOutputs {
+
+}

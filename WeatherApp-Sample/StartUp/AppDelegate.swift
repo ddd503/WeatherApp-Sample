@@ -15,7 +15,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        let topVC = WeatherViewController(presenter: WeatherViewPresenter())
+        let topVC = WeatherViewController(presenter: WeatherViewPresenter(weatherAPIDataStore: WeatherAPIDataStoreImpl()))
         window = UIWindow()
         window?.rootViewController = topVC
         window?.makeKeyAndVisible()
