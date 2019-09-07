@@ -21,8 +21,8 @@ class WeatherAPIDataStoreTest: XCTestCase {
         XCTAssertEqual(request.url!.query!, "city=130010")
     }
 
-    func test_requestApi_お天気APIから指定した地域の天気情報を受け取るテスト() {
-        let expectation = self.expectation(description: "お天気APIから天気情報を受け取るテスト")
+    func test_requestApi_お天気APIから指定した地域の天気情報を正しくパースして受け取るテスト() {
+        let expectation = self.expectation(description: "お天気APIから指定した地域の天気情報を正しくパースして受け取るテスト")
         let dataStore: WeatherAPIDataStore = WeatherAPIDataStoreImpl()
         let baseUrlString = "http://weather.livedoor.com/forecast/webservice/json/v1"
         let method = "GET"
@@ -30,9 +30,11 @@ class WeatherAPIDataStoreTest: XCTestCase {
         let urlRequest = dataStore.createRequest(baseUrlString: baseUrlString, method: method, parameters: parameters)
         dataStore.requestApi(urlRequest: urlRequest) { (result) in
             switch result {
-            case .success(let data):
+            case .success(let info):
                 expectation.fulfill()
-                XCTAssertNotNil(data)
+                XCTAssertEqual(info.location.prefecture, "福岡県")
+                XCTAssertEqual(info.location.area, "九州")
+                XCTAssertEqual(info.location.city, "久留米")
             default: XCTFail("get error response")
             }
         }

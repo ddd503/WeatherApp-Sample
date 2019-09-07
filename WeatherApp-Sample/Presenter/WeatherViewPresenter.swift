@@ -37,8 +37,9 @@ final class WeatherViewPresenter: WeatherViewPresenterInputs {
                                                            parameters: ["city": "130010"])
         weatherAPIDataStore.requestApi(urlRequest: urlRequest) { (result) in
             switch result {
-            case .success(let data):
-                print(String(data: data, encoding: .utf8)!)
+            case .success(let info):
+                print(info)
+//                print(String(data: data, encoding: .utf8)!)
             case .failure(let error):
                 print(error.localizedDescription)
             }

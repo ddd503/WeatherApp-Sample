@@ -9,15 +9,27 @@
 import Foundation
 
 protocol WeatherAPIDataStore {
-    func requestApi(urlRequest: URLRequest, completion: @escaping (Result<Data, Error>) -> ())
+    func requestApi(urlRequest: URLRequest, completion: @escaping (Result<WeatherInfo, Error>) -> ())
     func createRequest(baseUrlString: String, method: String, parameters: [String: String]) -> URLRequest
 }
 
 struct WeatherAPIDataStoreImpl: WeatherAPIDataStore {
-    func requestApi(urlRequest: URLRequest, completion: @escaping (Result<Data, Error>) -> ()) {
+    func requestApi(urlRequest: URLRequest, completion: @escaping (Result<WeatherInfo, Error>) -> ()) {
         let session = URLSession(configuration: .default)
         let urlRequest = urlRequest
-        APIClient().request(session: session, urlRequest: urlRequest, completion: completion)
+        APIClient().request(session: session, urlRequest: urlRequest, completion: { (result) in
+            switch result {
+            case .success(let data):
+                do {
+                    let info = try JSONDecoder().decode(WeatherInfo.self, from: data)
+                    completion(.success(info))
+                } catch {
+                    completion(.failure(error))
+                }
+            case .failure(let error):
+                completion(.failure(error))
+            }
+        })
     }
 
     func createRequest(baseUrlString: String, method: String, parameters: [String: String]) -> URLRequest {
