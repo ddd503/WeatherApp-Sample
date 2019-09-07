@@ -17,10 +17,12 @@ final class WeatherViewController: UIViewController {
     @IBOutlet private weak var minTemperatureLabel: UILabel!
     @IBOutlet private weak var maxTemperatureLabel: UILabel!
     @IBOutlet private weak var summaryLabel: UILabel!
-    @IBOutlet private weak var otherDaysForecastsView: UITableView! {
+    @IBOutlet private weak var afterDaysForecastsView: UITableView! {
         didSet {
-            otherDaysForecastsView.dataSource = self
-            otherDaysForecastsView.delegate = self
+            afterDaysForecastsView.dataSource = self
+            afterDaysForecastsView.delegate = self
+            afterDaysForecastsView.register(AfterDateInfoCell.nib(),
+                                            forCellReuseIdentifier: AfterDateInfoCell.identifier)
         }
     }
 
@@ -44,17 +46,35 @@ final class WeatherViewController: UIViewController {
 }
 
 extension WeatherViewController: WeatherViewPresenterOutputs {
+    func receivedWeatherInfo(_ info: WeatherInfo) {
+        DispatchQueue.main.async { [weak self] in
+            self?.afterDaysForecastsView.reloadData()
+        }
+    }
 
+    func notFoundTodayWeatherInfo() {
+
+    }
 }
 
 extension WeatherViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 0
+        guard let info = presenter.info, !info.forecasts.isEmpty else { return 0 }
+        return info.forecasts.count - 1
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        return UITableViewCell()
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: AfterDateInfoCell.identifier, for: indexPath) as? AfterDateInfoCell,
+            let info = presenter.info else {
+            fatalError("can not create cell")
+        }
+        cell.setInfo(info: info.forecasts[indexPath.row + 1])
+        return cell
     }
 }
 
-extension WeatherViewController: UITableViewDelegate {}
+extension WeatherViewController: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return tableView.bounds.size.height / 2
+    }
+}

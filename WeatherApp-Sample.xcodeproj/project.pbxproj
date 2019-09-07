@@ -19,6 +19,8 @@
 		45CD1ACA2323635800FFA201 /* APIClientTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45CD1AC92323635800FFA201 /* APIClientTest.swift */; };
 		45CD1ACC2323679D00FFA201 /* WeatherAPIDataStoreTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45CD1ACB2323679D00FFA201 /* WeatherAPIDataStoreTest.swift */; };
 		45CD1ACF232379B400FFA201 /* WeatherInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45CD1ACE232379B400FFA201 /* WeatherInfo.swift */; };
+		45CD1AD22323D73600FFA201 /* AfterDateInfoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45CD1AD02323D73600FFA201 /* AfterDateInfoCell.swift */; };
+		45CD1AD32323D73600FFA201 /* AfterDateInfoCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 45CD1AD12323D73600FFA201 /* AfterDateInfoCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -48,6 +50,8 @@
 		45CD1AC92323635800FFA201 /* APIClientTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIClientTest.swift; sourceTree = "<group>"; };
 		45CD1ACB2323679D00FFA201 /* WeatherAPIDataStoreTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherAPIDataStoreTest.swift; sourceTree = "<group>"; };
 		45CD1ACE232379B400FFA201 /* WeatherInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherInfo.swift; sourceTree = "<group>"; };
+		45CD1AD02323D73600FFA201 /* AfterDateInfoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AfterDateInfoCell.swift; sourceTree = "<group>"; };
+		45CD1AD12323D73600FFA201 /* AfterDateInfoCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AfterDateInfoCell.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -121,6 +125,8 @@
 			children = (
 				45CD1ABB2322958900FFA201 /* WeatherViewController.swift */,
 				45CD1ABC2322958900FFA201 /* WeatherViewController.xib */,
+				45CD1AD02323D73600FFA201 /* AfterDateInfoCell.swift */,
+				45CD1AD12323D73600FFA201 /* AfterDateInfoCell.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -286,6 +292,7 @@
 			files = (
 				45CD1AA02322915300FFA201 /* LaunchScreen.storyboard in Resources */,
 				45CD1ABE2322958900FFA201 /* WeatherViewController.xib in Resources */,
+				45CD1AD32323D73600FFA201 /* AfterDateInfoCell.xib in Resources */,
 				45CD1A9D2322915300FFA201 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -310,6 +317,7 @@
 				45CD1ABD2322958900FFA201 /* WeatherViewController.swift in Sources */,
 				45CD1AC62322CD2D00FFA201 /* WeatherAPIDataStore.swift in Sources */,
 				45CD1AC42322C7DF00FFA201 /* APIClient.swift in Sources */,
+				45CD1AD22323D73600FFA201 /* AfterDateInfoCell.swift in Sources */,
 				45CD1A9B2322915200FFA201 /* WeatherApp_Sample.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

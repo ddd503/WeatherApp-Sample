@@ -10,18 +10,21 @@ import Foundation
 
 protocol WeatherViewPresenterInputs {
     var view: WeatherViewPresenterOutputs? { get set }
+    var info: WeatherInfo? { get }
     func bind(view: WeatherViewPresenterOutputs)
     func viewDidLoad()
 }
 
 protocol WeatherViewPresenterOutputs: class {
-
+    func receivedWeatherInfo(_ info: WeatherInfo)
+    func notFoundTodayWeatherInfo()
 }
 
 final class WeatherViewPresenter: WeatherViewPresenterInputs {
 
     weak var view: WeatherViewPresenterOutputs?
     private let weatherAPIDataStore: WeatherAPIDataStore
+    var info: WeatherInfo?
 
     init(weatherAPIDataStore: WeatherAPIDataStore) {
         self.weatherAPIDataStore = weatherAPIDataStore
@@ -35,14 +38,27 @@ final class WeatherViewPresenter: WeatherViewPresenterInputs {
         let urlRequest = weatherAPIDataStore.createRequest(baseUrlString: "http://weather.livedoor.com/forecast/webservice/json/v1",
                                                            method: "GET",
                                                            parameters: ["city": "130010"])
-        weatherAPIDataStore.requestApi(urlRequest: urlRequest) { (result) in
+        weatherAPIDataStore.requestApi(urlRequest: urlRequest) { [weak self] (result) in
+            guard let self = self else { return }
             switch result {
             case .success(let info):
-                print(info)
-//                print(String(data: data, encoding: .utf8)!)
+                guard let todayWeatherInfo = info.forecasts.first, todayWeatherInfo.date == Date().dateString else {
+                    self.view?.notFoundTodayWeatherInfo()
+                    return
+                }
+                self.info = info
+                self.view?.receivedWeatherInfo(info)
             case .failure(let error):
                 print(error.localizedDescription)
             }
         }
+    }
+}
+
+private extension Date {
+    var dateString: String {
+        let format = DateFormatter()
+        format.dateFormat = "yyyy-MM-dd" // 2019-09-07みたいな
+        return format.string(from: self)
     }
 }

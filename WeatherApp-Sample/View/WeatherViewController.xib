@@ -12,10 +12,10 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="WeatherViewController" customModule="WeatherApp_Sample" customModuleProvider="target">
             <connections>
+                <outlet property="afterDaysForecastsView" destination="p70-NQ-XtE" id="HrR-O4-H6b"/>
                 <outlet property="forecastView" destination="aDY-iz-Gzt" id="HdE-u1-wQR"/>
                 <outlet property="maxTemperatureLabel" destination="zti-Vj-qGq" id="BtV-5X-rJR"/>
                 <outlet property="minTemperatureLabel" destination="FAX-R0-E7F" id="wGF-jy-Eqk"/>
-                <outlet property="otherDaysForecastsView" destination="p70-NQ-XtE" id="HrR-O4-H6b"/>
                 <outlet property="summaryLabel" destination="kBJ-rI-J5g" id="Dqm-eh-14y"/>
                 <outlet property="titleLabel" destination="HMB-vH-7Xw" id="RHb-oy-Wrz"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
@@ -100,7 +100,7 @@
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                 </tableView>
             </subviews>
-            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color key="backgroundColor" red="1" green="0.90043388580353945" blue="0.5734476483755091" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
                 <constraint firstItem="p70-NQ-XtE" firstAttribute="top" secondItem="aDY-iz-Gzt" secondAttribute="bottom" id="46R-u2-NlK"/>
                 <constraint firstItem="aDY-iz-Gzt" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="8lF-uz-OmJ"/>
