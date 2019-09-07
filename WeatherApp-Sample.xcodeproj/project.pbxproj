@@ -11,12 +11,13 @@
 		45CD1A9B2322915200FFA201 /* WeatherApp_Sample.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 45CD1A992322915200FFA201 /* WeatherApp_Sample.xcdatamodeld */; };
 		45CD1A9D2322915300FFA201 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 45CD1A9C2322915300FFA201 /* Assets.xcassets */; };
 		45CD1AA02322915300FFA201 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 45CD1A9E2322915300FFA201 /* LaunchScreen.storyboard */; };
-		45CD1AAB2322915300FFA201 /* WeatherApp_SampleTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45CD1AAA2322915300FFA201 /* WeatherApp_SampleTests.swift */; };
 		45CD1ABD2322958900FFA201 /* WeatherViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45CD1ABB2322958900FFA201 /* WeatherViewController.swift */; };
 		45CD1ABE2322958900FFA201 /* WeatherViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 45CD1ABC2322958900FFA201 /* WeatherViewController.xib */; };
 		45CD1AC0232296CB00FFA201 /* WeatherViewPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45CD1ABF232296CB00FFA201 /* WeatherViewPresenter.swift */; };
 		45CD1AC42322C7DF00FFA201 /* APIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45CD1AC32322C7DF00FFA201 /* APIClient.swift */; };
 		45CD1AC62322CD2D00FFA201 /* WeatherAPIDataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45CD1AC52322CD2D00FFA201 /* WeatherAPIDataStore.swift */; };
+		45CD1ACA2323635800FFA201 /* APIClientTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45CD1AC92323635800FFA201 /* APIClientTest.swift */; };
+		45CD1ACC2323679D00FFA201 /* WeatherAPIDataStoreTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45CD1ACB2323679D00FFA201 /* WeatherAPIDataStoreTest.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -37,13 +38,14 @@
 		45CD1A9F2322915300FFA201 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		45CD1AA12322915300FFA201 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		45CD1AA62322915300FFA201 /* WeatherApp-SampleTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "WeatherApp-SampleTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
-		45CD1AAA2322915300FFA201 /* WeatherApp_SampleTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherApp_SampleTests.swift; sourceTree = "<group>"; };
 		45CD1AAC2322915300FFA201 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		45CD1ABB2322958900FFA201 /* WeatherViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherViewController.swift; sourceTree = "<group>"; };
 		45CD1ABC2322958900FFA201 /* WeatherViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WeatherViewController.xib; sourceTree = "<group>"; };
 		45CD1ABF232296CB00FFA201 /* WeatherViewPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherViewPresenter.swift; sourceTree = "<group>"; };
 		45CD1AC32322C7DF00FFA201 /* APIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIClient.swift; sourceTree = "<group>"; };
 		45CD1AC52322CD2D00FFA201 /* WeatherAPIDataStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherAPIDataStore.swift; sourceTree = "<group>"; };
+		45CD1AC92323635800FFA201 /* APIClientTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIClientTest.swift; sourceTree = "<group>"; };
+		45CD1ACB2323679D00FFA201 /* WeatherAPIDataStoreTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherAPIDataStoreTest.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -97,7 +99,7 @@
 		45CD1AA92322915300FFA201 /* WeatherApp-SampleTests */ = {
 			isa = PBXGroup;
 			children = (
-				45CD1AAA2322915300FFA201 /* WeatherApp_SampleTests.swift */,
+				45CD1AC72323630B00FFA201 /* Model */,
 				45CD1AAC2322915300FFA201 /* Info.plist */,
 			);
 			path = "WeatherApp-SampleTests";
@@ -172,6 +174,23 @@
 			path = API;
 			sourceTree = "<group>";
 		};
+		45CD1AC72323630B00FFA201 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				45CD1AC82323633400FFA201 /* API */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		45CD1AC82323633400FFA201 /* API */ = {
+			isa = PBXGroup;
+			children = (
+				45CD1AC92323635800FFA201 /* APIClientTest.swift */,
+				45CD1ACB2323679D00FFA201 /* WeatherAPIDataStoreTest.swift */,
+			);
+			path = API;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -225,6 +244,7 @@
 					};
 					45CD1AA52322915300FFA201 = {
 						CreatedOnToolsVersion = 10.3;
+						LastSwiftMigration = 1030;
 						TestTargetID = 45CD1A8E2322915200FFA201;
 					};
 				};
@@ -286,7 +306,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				45CD1AAB2322915300FFA201 /* WeatherApp_SampleTests.swift in Sources */,
+				45CD1ACA2323635800FFA201 /* APIClientTest.swift in Sources */,
+				45CD1ACC2323679D00FFA201 /* WeatherAPIDataStoreTest.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -469,6 +490,7 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = LVR5UQEHBD;
 				INFOPLIST_FILE = "WeatherApp-SampleTests/Info.plist";
@@ -479,6 +501,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.kawahara.WeatherApp-SampleTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/WeatherApp-Sample.app/WeatherApp-Sample";
@@ -490,6 +513,7 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = LVR5UQEHBD;
 				INFOPLIST_FILE = "WeatherApp-SampleTests/Info.plist";

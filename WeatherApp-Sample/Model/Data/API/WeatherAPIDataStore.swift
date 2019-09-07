@@ -15,7 +15,7 @@ protocol WeatherAPIDataStore {
 
 struct WeatherAPIDataStoreImpl: WeatherAPIDataStore {
     func requestApi(urlRequest: URLRequest, completion: @escaping (Result<Data, Error>) -> ()) {
-        let session = URLSession(configuration: URLSessionConfiguration.default)
+        let session = URLSession(configuration: .default)
         let urlRequest = urlRequest
         APIClient().request(session: session, urlRequest: urlRequest, completion: completion)
     }
