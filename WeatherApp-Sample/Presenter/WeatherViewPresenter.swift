@@ -13,6 +13,7 @@ protocol WeatherViewPresenterInputs {
     var info: WeatherInfo? { get }
     func bind(view: WeatherViewPresenterOutputs)
     func viewDidLoad()
+    func reload()
 }
 
 protocol WeatherViewPresenterOutputs: class {
@@ -35,6 +36,14 @@ final class WeatherViewPresenter: WeatherViewPresenterInputs {
     }
 
     func viewDidLoad() {
+        callApi()
+    }
+
+    func reload() {
+        callApi()
+    }
+
+    private func callApi() {
         let urlRequest = weatherAPIDataStore.createRequest(baseUrlString: "http://weather.livedoor.com/forecast/webservice/json/v1",
                                                            method: "GET",
                                                            parameters: ["city": "130010"])
@@ -49,6 +58,7 @@ final class WeatherViewPresenter: WeatherViewPresenterInputs {
                 self.info = info
                 self.view?.receivedWeatherInfo(info)
             case .failure(let error):
+                self.view?.notFoundTodayWeatherInfo()
                 print(error.localizedDescription)
             }
         }

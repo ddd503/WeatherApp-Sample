@@ -50,6 +50,11 @@ extension WeatherViewController: WeatherViewPresenterOutputs {
     func receivedWeatherInfo(_ info: WeatherInfo) {
         DispatchQueue.main.async { [weak self] in
             guard let self = self else { return }
+            self.view.subviews.forEach {
+                if $0 is NotFoundWeatherInfoView {
+                    $0.removeFromSuperview()
+                }
+            }
             if let todayWeatherInfo = info.forecasts.first,
                 todayWeatherInfo.dateLabel == "今日" {
                 self.titleLabel.text = "\(todayWeatherInfo.dateLabel)の天気"
@@ -76,11 +81,21 @@ extension WeatherViewController: WeatherViewPresenterOutputs {
 
             }
             self.afterDaysForecastsView.reloadData()
+            self.forecastView.isHidden = false
+            self.afterDaysForecastsView.isHidden = false
         }
     }
 
     func notFoundTodayWeatherInfo() {
-
+        DispatchQueue.main.async { [weak self] in
+            guard let self = self else { return }
+            let notFoundWeatherInfoView = NotFoundWeatherInfoView(frame: self.view.frame) {
+                self.presenter.reload()
+            }
+            self.view.insertSubview(notFoundWeatherInfoView, aboveSubview: self.forecastView)
+            self.forecastView.isHidden = true
+            self.afterDaysForecastsView.isHidden = true
+        }
     }
 }
 

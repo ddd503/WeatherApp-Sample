@@ -21,6 +21,8 @@
 		45CD1ACF232379B400FFA201 /* WeatherInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45CD1ACE232379B400FFA201 /* WeatherInfo.swift */; };
 		45CD1AD22323D73600FFA201 /* AfterDateInfoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45CD1AD02323D73600FFA201 /* AfterDateInfoCell.swift */; };
 		45CD1AD32323D73600FFA201 /* AfterDateInfoCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 45CD1AD12323D73600FFA201 /* AfterDateInfoCell.xib */; };
+		45E68E8C23256897000A9ECC /* NotFoundWeatherInfoView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 45E68E8B23256897000A9ECC /* NotFoundWeatherInfoView.xib */; };
+		45E68E8E232569B0000A9ECC /* NotFoundWeatherInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45E68E8D232569B0000A9ECC /* NotFoundWeatherInfoView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -52,6 +54,8 @@
 		45CD1ACE232379B400FFA201 /* WeatherInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherInfo.swift; sourceTree = "<group>"; };
 		45CD1AD02323D73600FFA201 /* AfterDateInfoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AfterDateInfoCell.swift; sourceTree = "<group>"; };
 		45CD1AD12323D73600FFA201 /* AfterDateInfoCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AfterDateInfoCell.xib; sourceTree = "<group>"; };
+		45E68E8B23256897000A9ECC /* NotFoundWeatherInfoView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NotFoundWeatherInfoView.xib; sourceTree = "<group>"; };
+		45E68E8D232569B0000A9ECC /* NotFoundWeatherInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotFoundWeatherInfoView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -127,6 +131,8 @@
 				45CD1ABC2322958900FFA201 /* WeatherViewController.xib */,
 				45CD1AD02323D73600FFA201 /* AfterDateInfoCell.swift */,
 				45CD1AD12323D73600FFA201 /* AfterDateInfoCell.xib */,
+				45E68E8D232569B0000A9ECC /* NotFoundWeatherInfoView.swift */,
+				45E68E8B23256897000A9ECC /* NotFoundWeatherInfoView.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -291,6 +297,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				45CD1AA02322915300FFA201 /* LaunchScreen.storyboard in Resources */,
+				45E68E8C23256897000A9ECC /* NotFoundWeatherInfoView.xib in Resources */,
 				45CD1ABE2322958900FFA201 /* WeatherViewController.xib in Resources */,
 				45CD1AD32323D73600FFA201 /* AfterDateInfoCell.xib in Resources */,
 				45CD1A9D2322915300FFA201 /* Assets.xcassets in Resources */,
@@ -313,6 +320,7 @@
 			files = (
 				45CD1ACF232379B400FFA201 /* WeatherInfo.swift in Sources */,
 				45CD1AC0232296CB00FFA201 /* WeatherViewPresenter.swift in Sources */,
+				45E68E8E232569B0000A9ECC /* NotFoundWeatherInfoView.swift in Sources */,
 				45CD1A932322915200FFA201 /* AppDelegate.swift in Sources */,
 				45CD1ABD2322958900FFA201 /* WeatherViewController.swift in Sources */,
 				45CD1AC62322CD2D00FFA201 /* WeatherAPIDataStore.swift in Sources */,
