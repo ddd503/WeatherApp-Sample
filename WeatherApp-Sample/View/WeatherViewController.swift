@@ -12,6 +12,7 @@ final class WeatherViewController: UIViewController {
 
     @IBOutlet private weak var forecastView: UIView!
     @IBOutlet private weak var titleLabel: UILabel!
+    @IBOutlet private weak var dateLabel: UILabel!
     @IBOutlet private weak var weatherImageView: UIImageView!
     @IBOutlet private weak var weatherTitleLabel: UILabel!
     @IBOutlet private weak var minTemperatureLabel: UILabel!
@@ -48,7 +49,33 @@ final class WeatherViewController: UIViewController {
 extension WeatherViewController: WeatherViewPresenterOutputs {
     func receivedWeatherInfo(_ info: WeatherInfo) {
         DispatchQueue.main.async { [weak self] in
-            self?.afterDaysForecastsView.reloadData()
+            guard let self = self else { return }
+            if let todayWeatherInfo = info.forecasts.first,
+                todayWeatherInfo.dateLabel == "今日" {
+                self.titleLabel.text = "\(todayWeatherInfo.dateLabel)の天気"
+                self.dateLabel.text = todayWeatherInfo.date
+                self.weatherTitleLabel.text = todayWeatherInfo.telop
+                if let min = todayWeatherInfo.temperature.min {
+                    self.minTemperatureLabel.text = "最低気温: \(min.celsius)℃"
+                } else {
+                    self.minTemperatureLabel.text = "不明"
+                }
+                if let max = todayWeatherInfo.temperature.max {
+                    self.maxTemperatureLabel.text = "最高気温: \(max.celsius)℃"
+                } else {
+                    self.maxTemperatureLabel.text = "不明"
+                }
+                self.summaryLabel.text = info.description.text
+                if let url = URL(string: todayWeatherInfo.image.url),
+                    let imageData = try? Data(contentsOf: url),
+                    let image = UIImage(data: imageData) {
+                    self.weatherImageView.image = image
+                } else {
+                    self.weatherImageView.image = UIImage(named: "no_image")!
+                }
+
+            }
+            self.afterDaysForecastsView.reloadData()
         }
     }
 
