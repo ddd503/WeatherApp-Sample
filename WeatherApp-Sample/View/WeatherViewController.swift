@@ -18,6 +18,8 @@ final class WeatherViewController: UIViewController {
     @IBOutlet private weak var minTemperatureLabel: UILabel!
     @IBOutlet private weak var maxTemperatureLabel: UILabel!
     @IBOutlet private weak var summaryLabel: UILabel!
+    @IBOutlet private weak var copylightTitleLabel: UILabel!
+    @IBOutlet private weak var copylightLinkLabel: UILabel!
     @IBOutlet private weak var afterDaysForecastsView: UITableView! {
         didSet {
             afterDaysForecastsView.dataSource = self
@@ -78,7 +80,8 @@ extension WeatherViewController: WeatherViewPresenterOutputs {
                 } else {
                     self.weatherImageView.image = UIImage(named: "no_image")!
                 }
-
+                self.copylightTitleLabel.text = info.copyright.title
+                self.copylightLinkLabel.text = info.copyright.link
             }
             self.afterDaysForecastsView.reloadData()
             self.forecastView.isHidden = false
