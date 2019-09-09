@@ -19,6 +19,8 @@ protocol WeatherViewPresenterInputs {
 protocol WeatherViewPresenterOutputs: class {
     func receivedWeatherInfo(_ info: WeatherInfo)
     func notFoundTodayWeatherInfo()
+    func startIndicator()
+    func stopIndicator()
 }
 
 final class WeatherViewPresenter: WeatherViewPresenterInputs {
@@ -36,10 +38,12 @@ final class WeatherViewPresenter: WeatherViewPresenterInputs {
     }
 
     func viewDidLoad() {
+//        view?.startIndicator()
         callApi()
     }
 
     func reload() {
+//        view?.startIndicator()
         callApi()
     }
 
@@ -61,6 +65,7 @@ final class WeatherViewPresenter: WeatherViewPresenterInputs {
                 self.view?.notFoundTodayWeatherInfo()
                 print(error.localizedDescription)
             }
+            self.view?.stopIndicator()
         }
     }
 }

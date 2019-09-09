@@ -28,6 +28,7 @@ final class WeatherViewController: UIViewController {
                                             forCellReuseIdentifier: AfterDateInfoCell.identifier)
         }
     }
+    private lazy var indicatorView = IndicatorView(frame: view.bounds)
 
     let presenter: WeatherViewPresenterInputs!
 
@@ -98,6 +99,22 @@ extension WeatherViewController: WeatherViewPresenterOutputs {
             self.view.insertSubview(notFoundWeatherInfoView, aboveSubview: self.forecastView)
             self.forecastView.isHidden = true
             self.afterDaysForecastsView.isHidden = true
+        }
+    }
+
+    func startIndicator() {
+        DispatchQueue.main.async { [weak self] in
+            guard let self = self,
+                !self.view.subviews.contains(where: { $0 is IndicatorView }) else { return }
+            self.view.addSubview(self.indicatorView)
+            self.view.bringSubviewToFront(self.indicatorView)
+        }
+    }
+
+    func stopIndicator() {
+        DispatchQueue.main.async { [weak self] in
+            guard let self = self else { return }
+            self.view.subviews.filter { $0 is IndicatorView }.forEach { $0.removeFromSuperview() }
         }
     }
 }

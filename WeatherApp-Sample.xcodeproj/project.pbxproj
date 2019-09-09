@@ -23,6 +23,8 @@
 		45CD1AD32323D73600FFA201 /* AfterDateInfoCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 45CD1AD12323D73600FFA201 /* AfterDateInfoCell.xib */; };
 		45E68E8C23256897000A9ECC /* NotFoundWeatherInfoView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 45E68E8B23256897000A9ECC /* NotFoundWeatherInfoView.xib */; };
 		45E68E8E232569B0000A9ECC /* NotFoundWeatherInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45E68E8D232569B0000A9ECC /* NotFoundWeatherInfoView.swift */; };
+		45E68E9023266E60000A9ECC /* IndicatorView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 45E68E8F23266E60000A9ECC /* IndicatorView.xib */; };
+		45E68E9223266EDB000A9ECC /* IndicatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45E68E9123266EDB000A9ECC /* IndicatorView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -56,6 +58,8 @@
 		45CD1AD12323D73600FFA201 /* AfterDateInfoCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AfterDateInfoCell.xib; sourceTree = "<group>"; };
 		45E68E8B23256897000A9ECC /* NotFoundWeatherInfoView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NotFoundWeatherInfoView.xib; sourceTree = "<group>"; };
 		45E68E8D232569B0000A9ECC /* NotFoundWeatherInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotFoundWeatherInfoView.swift; sourceTree = "<group>"; };
+		45E68E8F23266E60000A9ECC /* IndicatorView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = IndicatorView.xib; sourceTree = "<group>"; };
+		45E68E9123266EDB000A9ECC /* IndicatorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IndicatorView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -129,10 +133,8 @@
 			children = (
 				45CD1ABB2322958900FFA201 /* WeatherViewController.swift */,
 				45CD1ABC2322958900FFA201 /* WeatherViewController.xib */,
-				45CD1AD02323D73600FFA201 /* AfterDateInfoCell.swift */,
-				45CD1AD12323D73600FFA201 /* AfterDateInfoCell.xib */,
-				45E68E8D232569B0000A9ECC /* NotFoundWeatherInfoView.swift */,
-				45E68E8B23256897000A9ECC /* NotFoundWeatherInfoView.xib */,
+				45E68E93232670EB000A9ECC /* CustomView */,
+				45E68E94232670F0000A9ECC /* TableViewCell */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -212,6 +214,26 @@
 				45CD1ACE232379B400FFA201 /* WeatherInfo.swift */,
 			);
 			path = ViewObject;
+			sourceTree = "<group>";
+		};
+		45E68E93232670EB000A9ECC /* CustomView */ = {
+			isa = PBXGroup;
+			children = (
+				45E68E8D232569B0000A9ECC /* NotFoundWeatherInfoView.swift */,
+				45E68E8B23256897000A9ECC /* NotFoundWeatherInfoView.xib */,
+				45E68E9123266EDB000A9ECC /* IndicatorView.swift */,
+				45E68E8F23266E60000A9ECC /* IndicatorView.xib */,
+			);
+			path = CustomView;
+			sourceTree = "<group>";
+		};
+		45E68E94232670F0000A9ECC /* TableViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				45CD1AD02323D73600FFA201 /* AfterDateInfoCell.swift */,
+				45CD1AD12323D73600FFA201 /* AfterDateInfoCell.xib */,
+			);
+			path = TableViewCell;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -300,6 +322,7 @@
 				45E68E8C23256897000A9ECC /* NotFoundWeatherInfoView.xib in Resources */,
 				45CD1ABE2322958900FFA201 /* WeatherViewController.xib in Resources */,
 				45CD1AD32323D73600FFA201 /* AfterDateInfoCell.xib in Resources */,
+				45E68E9023266E60000A9ECC /* IndicatorView.xib in Resources */,
 				45CD1A9D2322915300FFA201 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -322,6 +345,7 @@
 				45CD1AC0232296CB00FFA201 /* WeatherViewPresenter.swift in Sources */,
 				45E68E8E232569B0000A9ECC /* NotFoundWeatherInfoView.swift in Sources */,
 				45CD1A932322915200FFA201 /* AppDelegate.swift in Sources */,
+				45E68E9223266EDB000A9ECC /* IndicatorView.swift in Sources */,
 				45CD1ABD2322958900FFA201 /* WeatherViewController.swift in Sources */,
 				45CD1AC62322CD2D00FFA201 /* WeatherAPIDataStore.swift in Sources */,
 				45CD1AC42322C7DF00FFA201 /* APIClient.swift in Sources */,
