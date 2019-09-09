@@ -38,12 +38,12 @@ final class WeatherViewPresenter: WeatherViewPresenterInputs {
     }
 
     func viewDidLoad() {
-//        view?.startIndicator()
+        view?.startIndicator()
         callApi()
     }
 
     func reload() {
-//        view?.startIndicator()
+        view?.startIndicator()
         callApi()
     }
 
