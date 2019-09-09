@@ -16,7 +16,6 @@
                 <outlet property="copylightLinkLabel" destination="jbG-PC-J9t" id="9bN-1Z-645"/>
                 <outlet property="copylightTitleLabel" destination="MAx-0h-xWx" id="PJx-7r-saL"/>
                 <outlet property="dateLabel" destination="f9J-Oz-wSY" id="gvN-eU-Jnr"/>
-                <outlet property="forecastView" destination="aDY-iz-Gzt" id="HdE-u1-wQR"/>
                 <outlet property="maxTemperatureLabel" destination="zti-Vj-qGq" id="BtV-5X-rJR"/>
                 <outlet property="minTemperatureLabel" destination="FAX-R0-E7F" id="wGF-jy-Eqk"/>
                 <outlet property="summaryLabel" destination="kBJ-rI-J5g" id="Dqm-eh-14y"/>
@@ -31,7 +30,7 @@
             <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aDY-iz-Gzt">
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aDY-iz-Gzt">
                     <rect key="frame" x="0.0" y="0.0" width="414" height="727.5"/>
                     <subviews>
                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="caY-QQ-Hcq">
@@ -132,7 +131,7 @@
                         <constraint firstItem="caY-QQ-Hcq" firstAttribute="top" secondItem="aDY-iz-Gzt" secondAttribute="top" constant="70" id="rSQ-Z7-Q38"/>
                     </constraints>
                 </view>
-                <tableView hidden="YES" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="p70-NQ-XtE">
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="p70-NQ-XtE">
                     <rect key="frame" x="0.0" y="727.5" width="414" height="134.5"/>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                 </tableView>

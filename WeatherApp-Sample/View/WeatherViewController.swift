@@ -10,7 +10,6 @@ import UIKit
 
 final class WeatherViewController: UIViewController {
 
-    @IBOutlet private weak var forecastView: UIView!
     @IBOutlet private weak var titleLabel: UILabel!
     @IBOutlet private weak var dateLabel: UILabel!
     @IBOutlet private weak var weatherImageView: UIImageView!
@@ -29,6 +28,9 @@ final class WeatherViewController: UIViewController {
         }
     }
     private lazy var indicatorView = IndicatorView(frame: view.bounds)
+    private lazy var notFoundWeatherInfoView = NotFoundWeatherInfoView(frame: self.view.frame) { [weak self] in
+        self?.presenter.reload()
+    }
 
     let presenter: WeatherViewPresenterInputs!
 
@@ -53,11 +55,9 @@ extension WeatherViewController: WeatherViewPresenterOutputs {
     func receivedWeatherInfo(_ info: WeatherInfo) {
         DispatchQueue.main.async { [weak self] in
             guard let self = self else { return }
-            self.view.subviews.forEach {
-                if $0 is NotFoundWeatherInfoView {
-                    $0.removeFromSuperview()
-                }
-            }
+            
+            self.view.subviews.filter { $0 is NotFoundWeatherInfoView }.forEach { $0.removeFromSuperview() }
+
             if let todayWeatherInfo = info.forecasts.first,
                 todayWeatherInfo.dateLabel == "今日" {
                 self.titleLabel.text = "\(todayWeatherInfo.dateLabel)の天気"
@@ -85,20 +85,15 @@ extension WeatherViewController: WeatherViewPresenterOutputs {
                 self.copylightLinkLabel.text = info.copyright.link
             }
             self.afterDaysForecastsView.reloadData()
-            self.forecastView.isHidden = false
-            self.afterDaysForecastsView.isHidden = false
         }
     }
 
     func notFoundTodayWeatherInfo() {
         DispatchQueue.main.async { [weak self] in
-            guard let self = self else { return }
-            let notFoundWeatherInfoView = NotFoundWeatherInfoView(frame: self.view.frame) {
-                self.presenter.reload()
-            }
-            self.view.insertSubview(notFoundWeatherInfoView, aboveSubview: self.forecastView)
-            self.forecastView.isHidden = true
-            self.afterDaysForecastsView.isHidden = true
+            guard let self = self,
+                !self.view.subviews.contains(where: { $0 is NotFoundWeatherInfoView }) else { return }
+            self.view.addSubview(self.notFoundWeatherInfoView)
+            self.view.bringSubviewToFront(self.notFoundWeatherInfoView)
         }
     }
 
