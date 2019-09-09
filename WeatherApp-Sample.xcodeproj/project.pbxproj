@@ -27,6 +27,7 @@
 		45E68E9223266EDB000A9ECC /* IndicatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45E68E9123266EDB000A9ECC /* IndicatorView.swift */; };
 		45E68E9D2326FE2A000A9ECC /* AfterDayWeatherInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45E68E9B2326FE2A000A9ECC /* AfterDayWeatherInfoViewController.swift */; };
 		45E68E9E2326FE2A000A9ECC /* AfterDayWeatherInfoViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 45E68E9C2326FE2A000A9ECC /* AfterDayWeatherInfoViewController.xib */; };
+		45E68EA023270435000A9ECC /* AfterDayWeatherInfoViewPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45E68E9F23270435000A9ECC /* AfterDayWeatherInfoViewPresenter.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -64,6 +65,7 @@
 		45E68E9123266EDB000A9ECC /* IndicatorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IndicatorView.swift; sourceTree = "<group>"; };
 		45E68E9B2326FE2A000A9ECC /* AfterDayWeatherInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AfterDayWeatherInfoViewController.swift; sourceTree = "<group>"; };
 		45E68E9C2326FE2A000A9ECC /* AfterDayWeatherInfoViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AfterDayWeatherInfoViewController.xib; sourceTree = "<group>"; };
+		45E68E9F23270435000A9ECC /* AfterDayWeatherInfoViewPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AfterDayWeatherInfoViewPresenter.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -149,6 +151,7 @@
 			isa = PBXGroup;
 			children = (
 				45CD1ABF232296CB00FFA201 /* WeatherViewPresenter.swift */,
+				45E68E9F23270435000A9ECC /* AfterDayWeatherInfoViewPresenter.swift */,
 			);
 			path = Presenter;
 			sourceTree = "<group>";
@@ -348,6 +351,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				45E68EA023270435000A9ECC /* AfterDayWeatherInfoViewPresenter.swift in Sources */,
 				45CD1ACF232379B400FFA201 /* WeatherInfo.swift in Sources */,
 				45CD1AC0232296CB00FFA201 /* WeatherViewPresenter.swift in Sources */,
 				45E68E8E232569B0000A9ECC /* NotFoundWeatherInfoView.swift in Sources */,

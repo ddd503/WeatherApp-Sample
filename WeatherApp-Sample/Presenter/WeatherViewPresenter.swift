@@ -14,6 +14,7 @@ protocol WeatherViewPresenterInputs {
     func bind(view: WeatherViewPresenterOutputs)
     func viewDidLoad()
     func reload()
+    func didSelectTableViewRow(indexPath: IndexPath)
 }
 
 protocol WeatherViewPresenterOutputs: class {
@@ -21,6 +22,8 @@ protocol WeatherViewPresenterOutputs: class {
     func notFoundTodayWeatherInfo()
     func startIndicator()
     func stopIndicator()
+    func transitionAfterDayWeatherInfoVC(weatherInfo: Forecast)
+    func notFoundAfterDayWeatherInfo()
 }
 
 final class WeatherViewPresenter: WeatherViewPresenterInputs {
@@ -45,6 +48,14 @@ final class WeatherViewPresenter: WeatherViewPresenterInputs {
     func reload() {
         view?.startIndicator()
         callApi()
+    }
+
+    func didSelectTableViewRow(indexPath: IndexPath) {
+        guard let weatherInfo = info?.forecasts[indexPath.row + 1] else {
+            view?.notFoundAfterDayWeatherInfo()
+            return
+        }
+        view?.transitionAfterDayWeatherInfoVC(weatherInfo: weatherInfo)
     }
 
     private func callApi() {

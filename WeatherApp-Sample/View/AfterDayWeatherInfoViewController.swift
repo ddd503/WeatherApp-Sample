@@ -16,14 +16,15 @@ final class AfterDayWeatherInfoViewController: UIViewController {
     @IBOutlet private weak var weatherTitleLabel: UILabel!
     @IBOutlet private weak var minTemperatureLabel: UILabel!
     @IBOutlet private weak var maxTemperatureLabel: UILabel!
-    @IBOutlet private weak var copylightTitleLabel: UILabel!
-    @IBOutlet private weak var copylightLinkLabel: UILabel!
 
+    let presenter: AfterDayWeatherInfoViewPresenterInputs!
     private let weatherInfo: Forecast
 
-    init(weatherInfo: Forecast) {
+    init(presenter: AfterDayWeatherInfoViewPresenterInputs, weatherInfo: Forecast) {
+        self.presenter = presenter
         self.weatherInfo = weatherInfo
         super.init(nibName: String(describing: AfterDayWeatherInfoViewController.self), bundle: .main)
+        self.presenter.bind(view: self)
     }
 
     required init?(coder aDecoder: NSCoder) {
@@ -32,8 +33,32 @@ final class AfterDayWeatherInfoViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-
+        presenter.viewDidLoad()
     }
+    
+}
 
+extension AfterDayWeatherInfoViewController: AfterDayWeatherInfoViewPresenterOutputs {
+    func setupLayout() {
+        titleLabel.text = "\(weatherInfo.dateLabel)の天気"
+        dateLabel.text = weatherInfo.date
+        weatherTitleLabel.text = weatherInfo.telop
+        if let min = weatherInfo.temperature.min {
+            minTemperatureLabel.text = "最低気温\n\(min.celsius)℃"
+        } else {
+            minTemperatureLabel.text = "最低気温\n不明"
+        }
+        if let max = weatherInfo.temperature.max {
+            maxTemperatureLabel.text = "最高気温\n\(max.celsius)℃"
+        } else {
+            maxTemperatureLabel.text = "最高気温\n不明"
+        }
+        if let url = URL(string: weatherInfo.image.url),
+            let imageData = try? Data(contentsOf: url),
+            let image = UIImage(data: imageData) {
+            weatherImageView.image = image
+        } else {
+            weatherImageView.image = UIImage(named: "no_image")!
+        }
+    }
 }

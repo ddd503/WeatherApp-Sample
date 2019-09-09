@@ -55,11 +55,8 @@ extension WeatherViewController: WeatherViewPresenterOutputs {
     func receivedWeatherInfo(_ info: WeatherInfo) {
         DispatchQueue.main.async { [weak self] in
             guard let self = self else { return }
-            
             self.view.subviews.filter { $0 is NotFoundWeatherInfoView }.forEach { $0.removeFromSuperview() }
-
-            if let todayWeatherInfo = info.forecasts.first,
-                todayWeatherInfo.dateLabel == "今日" {
+            if let todayWeatherInfo = info.forecasts.first, todayWeatherInfo.dateLabel == "今日" {
                 self.titleLabel.text = "\(info.location.prefecture)の天気"
                 self.dateLabel.text = todayWeatherInfo.date
                 self.weatherTitleLabel.text = todayWeatherInfo.telop
@@ -112,6 +109,20 @@ extension WeatherViewController: WeatherViewPresenterOutputs {
             self.view.subviews.filter { $0 is IndicatorView }.forEach { $0.removeFromSuperview() }
         }
     }
+
+    func transitionAfterDayWeatherInfoVC(weatherInfo: Forecast) {
+        let afterDayWeatherInfoVC = AfterDayWeatherInfoViewController(presenter: AfterDayWeatherInfoViewPresenter(),
+                                                                      weatherInfo: weatherInfo)
+        present(afterDayWeatherInfoVC, animated: true)
+    }
+
+    func notFoundAfterDayWeatherInfo() {
+        DispatchQueue.main.async { [weak self] in
+            if let indexPathForSelectedRow = self?.afterDaysForecastsView.indexPathForSelectedRow {
+                self?.afterDaysForecastsView.deselectRow(at: indexPathForSelectedRow, animated: true)
+            }
+        }
+    }
 }
 
 extension WeatherViewController: UITableViewDataSource {
@@ -123,7 +134,7 @@ extension WeatherViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: AfterDateInfoCell.identifier, for: indexPath) as? AfterDateInfoCell,
             let info = presenter.info else {
-            fatalError("can not create cell")
+                fatalError("can not create cell")
         }
         cell.setInfo(info: info.forecasts[indexPath.row + 1])
         return cell
@@ -131,6 +142,10 @@ extension WeatherViewController: UITableViewDataSource {
 }
 
 extension WeatherViewController: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        presenter.didSelectTableViewRow(indexPath: indexPath)
+    }
+
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return tableView.bounds.size.height / 2
     }
