@@ -55,7 +55,7 @@ final class WeatherViewPresenter: WeatherViewPresenterInputs {
             guard let self = self else { return }
             switch result {
             case .success(let info):
-                guard let todayWeatherInfo = info.forecasts.first, todayWeatherInfo.date != Date().dateString else {
+                guard let todayWeatherInfo = info.forecasts.first, todayWeatherInfo.date == Date().dateString else {
                     self.view?.notFoundTodayWeatherInfo()
                     break
                 }

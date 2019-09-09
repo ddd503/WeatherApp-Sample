@@ -60,18 +60,18 @@ extension WeatherViewController: WeatherViewPresenterOutputs {
 
             if let todayWeatherInfo = info.forecasts.first,
                 todayWeatherInfo.dateLabel == "今日" {
-                self.titleLabel.text = "\(todayWeatherInfo.dateLabel)の天気"
+                self.titleLabel.text = "\(info.location.prefecture)の天気"
                 self.dateLabel.text = todayWeatherInfo.date
                 self.weatherTitleLabel.text = todayWeatherInfo.telop
                 if let min = todayWeatherInfo.temperature.min {
-                    self.minTemperatureLabel.text = "最低気温: \(min.celsius)℃"
+                    self.minTemperatureLabel.text = "最低気温\n\(min.celsius)℃"
                 } else {
-                    self.minTemperatureLabel.text = "不明"
+                    self.minTemperatureLabel.text = "最低気温\n不明"
                 }
                 if let max = todayWeatherInfo.temperature.max {
-                    self.maxTemperatureLabel.text = "最高気温: \(max.celsius)℃"
+                    self.maxTemperatureLabel.text = "最高気温\n\(max.celsius)℃"
                 } else {
-                    self.maxTemperatureLabel.text = "不明"
+                    self.maxTemperatureLabel.text = "最高気温\n不明"
                 }
                 self.summaryLabel.text = info.description.text
                 if let url = URL(string: todayWeatherInfo.image.url),
