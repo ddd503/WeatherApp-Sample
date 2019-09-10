@@ -51,11 +51,11 @@ final class WeatherViewPresenter: WeatherViewPresenterInputs {
     }
 
     func didSelectTableViewRow(indexPath: IndexPath) {
-        guard let weatherInfo = info?.forecasts[indexPath.row + 1] else {
+        guard let info = info, info.forecasts.count > indexPath.row + 1 else {
             view?.notFoundAfterDayWeatherInfo()
             return
         }
-        view?.transitionAfterDayWeatherInfoVC(weatherInfo: weatherInfo)
+        view?.transitionAfterDayWeatherInfoVC(weatherInfo: info.forecasts[indexPath.row + 1])
     }
 
     private func callApi() {
