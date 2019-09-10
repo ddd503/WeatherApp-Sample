@@ -49,6 +49,15 @@ final class WeatherViewController: UIViewController {
         presenter.viewDidLoad()
     }
 
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+
+        if let indexPathForSelectedRow = afterDaysForecastsView.indexPathForSelectedRow {
+            afterDaysForecastsView.deselectRow(at: indexPathForSelectedRow, animated: true)
+        }
+    }
+
+
 }
 
 extension WeatherViewController: WeatherViewPresenterOutputs {
@@ -113,7 +122,11 @@ extension WeatherViewController: WeatherViewPresenterOutputs {
     func transitionAfterDayWeatherInfoVC(weatherInfo: Forecast) {
         let afterDayWeatherInfoVC = AfterDayWeatherInfoViewController(presenter: AfterDayWeatherInfoViewPresenter(),
                                                                       weatherInfo: weatherInfo)
+        afterDayWeatherInfoVC.modalPresentationStyle = .overFullScreen
         present(afterDayWeatherInfoVC, animated: true)
+        if let indexPathForSelectedRow = afterDaysForecastsView.indexPathForSelectedRow {
+            afterDaysForecastsView.deselectRow(at: indexPathForSelectedRow, animated: true)
+        }
     }
 
     func notFoundAfterDayWeatherInfo() {

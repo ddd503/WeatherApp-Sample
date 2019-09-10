@@ -35,7 +35,11 @@ final class AfterDayWeatherInfoViewController: UIViewController {
         super.viewDidLoad()
         presenter.viewDidLoad()
     }
-    
+
+    @IBAction func didTapBackgruond(_ sender: UITapGestureRecognizer) {
+        dismiss(animated: true, completion: nil)
+    }
+
 }
 
 extension AfterDayWeatherInfoViewController: AfterDayWeatherInfoViewPresenterOutputs {
