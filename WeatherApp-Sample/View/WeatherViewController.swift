@@ -56,8 +56,6 @@ final class WeatherViewController: UIViewController {
             afterDaysForecastsView.deselectRow(at: indexPathForSelectedRow, animated: true)
         }
     }
-
-
 }
 
 extension WeatherViewController: WeatherViewPresenterOutputs {
@@ -122,7 +120,8 @@ extension WeatherViewController: WeatherViewPresenterOutputs {
     func transitionAfterDayWeatherInfoVC(weatherInfo: Forecast) {
         let afterDayWeatherInfoVC = AfterDayWeatherInfoViewController(presenter: AfterDayWeatherInfoViewPresenter(),
                                                                       weatherInfo: weatherInfo)
-        afterDayWeatherInfoVC.modalPresentationStyle = .overFullScreen
+        afterDayWeatherInfoVC.modalPresentationStyle = .custom
+        afterDayWeatherInfoVC.transitioningDelegate = self
         present(afterDayWeatherInfoVC, animated: true)
         if let indexPathForSelectedRow = afterDaysForecastsView.indexPathForSelectedRow {
             afterDaysForecastsView.deselectRow(at: indexPathForSelectedRow, animated: true)
@@ -161,5 +160,11 @@ extension WeatherViewController: UITableViewDelegate {
 
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return tableView.bounds.size.height / 2
+    }
+}
+
+extension WeatherViewController: UIViewControllerTransitioningDelegate {
+    func presentationController(forPresented presented: UIViewController, presenting: UIViewController?, source: UIViewController) -> UIPresentationController? {
+        return WeatherViewPresentationController(presentedViewController: presented, presenting: presenting)
     }
 }

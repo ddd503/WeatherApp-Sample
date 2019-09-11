@@ -8,7 +8,7 @@
 
 import UIKit
 
-final class AfterDayWeatherInfoViewController: UIViewController {
+final class AfterDayWeatherInfoViewController: UIViewController, WeatherViewCustomPresentable {
 
     @IBOutlet private weak var titleLabel: UILabel!
     @IBOutlet private weak var dateLabel: UILabel!
@@ -16,6 +16,7 @@ final class AfterDayWeatherInfoViewController: UIViewController {
     @IBOutlet private weak var weatherTitleLabel: UILabel!
     @IBOutlet private weak var minTemperatureLabel: UILabel!
     @IBOutlet private weak var maxTemperatureLabel: UILabel!
+    @IBOutlet weak var backgroundView: UIView!
 
     let presenter: AfterDayWeatherInfoViewPresenterInputs!
     private let weatherInfo: Forecast
