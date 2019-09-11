@@ -14,6 +14,8 @@ protocol WeatherViewCustomPresentable: UIViewController {
 
 final class WeatherViewPresentationController: UIPresentationController {
 
+    /// Present時
+    
     override func presentationTransitionWillBegin() {
         super.presentationTransitionWillBegin()
         guard let containerView = containerView,
@@ -30,5 +32,22 @@ final class WeatherViewPresentationController: UIPresentationController {
             backgroundView.removeFromSuperview()
         })
     }
-    
+
+    /// Dismiss時
+
+    override func dismissalTransitionWillBegin() {
+        super.dismissalTransitionWillBegin()
+        guard let containerView = containerView,
+            let presented = presentedViewController as? WeatherViewCustomPresentable else { return }
+
+        presented.backgroundView.alpha = 0.0
+
+        let backgroundView = UIView(frame: presented.view.bounds)
+        backgroundView.backgroundColor = presented.backgroundView.backgroundColor
+        containerView.insertSubview(backgroundView, aboveSubview: presented.backgroundView)
+
+        presentedViewController.transitionCoordinator?.animate(alongsideTransition: nil, completion: { (_) in
+            backgroundView.removeFromSuperview()
+        })
+    }
 }

@@ -48,14 +48,6 @@ final class WeatherViewController: UIViewController {
         super.viewDidLoad()
         presenter.viewDidLoad()
     }
-
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-
-        if let indexPathForSelectedRow = afterDaysForecastsView.indexPathForSelectedRow {
-            afterDaysForecastsView.deselectRow(at: indexPathForSelectedRow, animated: true)
-        }
-    }
 }
 
 extension WeatherViewController: WeatherViewPresenterOutputs {
@@ -118,13 +110,16 @@ extension WeatherViewController: WeatherViewPresenterOutputs {
     }
 
     func transitionAfterDayWeatherInfoVC(weatherInfo: Forecast) {
-        let afterDayWeatherInfoVC = AfterDayWeatherInfoViewController(presenter: AfterDayWeatherInfoViewPresenter(),
-                                                                      weatherInfo: weatherInfo)
-        afterDayWeatherInfoVC.modalPresentationStyle = .custom
-        afterDayWeatherInfoVC.transitioningDelegate = self
-        present(afterDayWeatherInfoVC, animated: true)
-        if let indexPathForSelectedRow = afterDaysForecastsView.indexPathForSelectedRow {
-            afterDaysForecastsView.deselectRow(at: indexPathForSelectedRow, animated: true)
+        DispatchQueue.main.async { [weak self] in
+            guard let self = self else { return }
+            let afterDayWeatherInfoVC = AfterDayWeatherInfoViewController(presenter: AfterDayWeatherInfoViewPresenter(),
+                                                                          weatherInfo: weatherInfo)
+            afterDayWeatherInfoVC.modalPresentationStyle = .custom
+            afterDayWeatherInfoVC.transitioningDelegate = self
+            self.present(afterDayWeatherInfoVC, animated: true)
+            if let indexPathForSelectedRow = self.afterDaysForecastsView.indexPathForSelectedRow {
+                self.afterDaysForecastsView.deselectRow(at: indexPathForSelectedRow, animated: true)
+            }
         }
     }
 
