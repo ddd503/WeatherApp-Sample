@@ -154,7 +154,8 @@ extension WeatherViewController: UITableViewDelegate {
     }
 
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return tableView.bounds.size.height / 2
+        guard let info = presenter.info else { return 0 }
+        return tableView.bounds.size.height / CGFloat(info.forecasts.count - 1)
     }
 }
 
