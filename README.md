@@ -3,6 +3,9 @@
 
 <img src="https://github.com/ddd503/Image-Resource/raw/master/image/weather_app_screen.png" width="200">
 
+# 利用API
+http://weather.livedoor.com/weather_hacks/webservice
+
 # 開発環境
 
 |Category | Version |
