@@ -8,22 +8,18 @@
 
 import UIKit
 
-class NotFoundWeatherInfoView: UIView {
+final class NotFoundWeatherInfoView: UIView {
     
-    let task: (() -> ())
+    private var task: (() -> ())?
 
-    init(frame: CGRect, task: @escaping () -> ()) {
-        self.task = task
-        super.init(frame: frame)
-        let customView = Bundle.main.loadNibNamed("NotFoundWeatherInfoView", owner: self, options: nil)!.first! as! UIView
-        addSubview(customView)
-    }
-
-    required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
+    static func make(frame: CGRect, task: @escaping () -> ()) -> NotFoundWeatherInfoView {
+        let view = UINib(nibName: "NotFoundWeatherInfoView", bundle: nil).instantiate(withOwner: nil, options: nil).first as! NotFoundWeatherInfoView
+        view.frame = frame
+        view.task = task
+        return view
     }
 
     @IBAction func didTapRequest(_ sender: UIButton) {
-        task()
+        task?()
     }
 }

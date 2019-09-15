@@ -27,11 +27,11 @@ final class WeatherViewController: UIViewController {
                                             forCellReuseIdentifier: AfterDateInfoCell.identifier)
         }
     }
-    private lazy var indicatorView = IndicatorView(frame: view.bounds)
-    private lazy var notFoundWeatherInfoView = NotFoundWeatherInfoView(frame: self.view.frame) { [weak self] in
+    private lazy var indicatorView = IndicatorView.make(frame: view.bounds)
+    private lazy var notFoundWeatherInfoView = NotFoundWeatherInfoView.make(frame: view.bounds) { [weak self] in
         self?.presenter.reload()
     }
-
+    
     let presenter: WeatherViewPresenterInputs!
 
     init(presenter: WeatherViewPresenterInputs) {

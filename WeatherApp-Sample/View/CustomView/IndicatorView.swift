@@ -8,17 +8,12 @@
 
 import UIKit
 
-class IndicatorView: UIView {
+final class IndicatorView: UIView {
 
-    override init(frame: CGRect) {
-        super.init(frame: frame)
-        if let customView = Bundle.main.loadNibNamed("IndicatorView", owner: self, options: nil)?.first as? UIView {
-            addSubview(customView)
-        }
-    }
-
-    required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
+    static func make(frame: CGRect) -> IndicatorView {
+        let view = UINib(nibName: "IndicatorView", bundle: nil).instantiate(withOwner: nil, options: nil).first as! IndicatorView
+        view.frame = frame
+        return view
     }
 
 }
