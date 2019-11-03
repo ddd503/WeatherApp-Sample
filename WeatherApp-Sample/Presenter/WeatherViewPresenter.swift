@@ -15,6 +15,7 @@ protocol WeatherViewPresenterInputs {
     func viewDidLoad()
     func reload()
     func didSelectTableViewRow(indexPath: IndexPath)
+    func callApi(request: URLRequest)
 }
 
 protocol WeatherViewPresenterOutputs: class {
@@ -30,6 +31,11 @@ final class WeatherViewPresenter: WeatherViewPresenterInputs {
 
     weak var view: WeatherViewPresenterOutputs?
     private let weatherAPIDataStore: WeatherAPIDataStore
+    private var createRequest: URLRequest {
+        return weatherAPIDataStore.createRequest(baseUrlString: "http://weather.livedoor.com/forecast/webservice/json/v1",
+                                                 method: "GET",
+                                                 parameters: ["city": "130010"])
+    }
     var info: WeatherInfo?
 
     init(weatherAPIDataStore: WeatherAPIDataStore) {
@@ -42,12 +48,12 @@ final class WeatherViewPresenter: WeatherViewPresenterInputs {
 
     func viewDidLoad() {
         view?.startIndicator()
-        callApi()
+        callApi(request: createRequest)
     }
 
     func reload() {
         view?.startIndicator()
-        callApi()
+        callApi(request: createRequest)
     }
 
     func didSelectTableViewRow(indexPath: IndexPath) {
@@ -58,11 +64,8 @@ final class WeatherViewPresenter: WeatherViewPresenterInputs {
         view?.transitionAfterDayWeatherInfoVC(weatherInfo: info.forecasts[indexPath.row + 1])
     }
 
-    private func callApi() {
-        let urlRequest = weatherAPIDataStore.createRequest(baseUrlString: "http://weather.livedoor.com/forecast/webservice/json/v1",
-                                                           method: "GET",
-                                                           parameters: ["city": "130010"])
-        weatherAPIDataStore.requestApi(urlRequest: urlRequest) { [weak self] (result) in
+    func callApi(request: URLRequest) {
+        weatherAPIDataStore.requestApi(urlRequest: request) { [weak self] (result) in
             guard let self = self else { return }
             switch result {
             case .success(let info):
