@@ -1,5 +1,5 @@
 # WeatherApp-Sample
-お天気APIから天候情報を取得して表示するサンプル（OSS未使用）
+お天気APIから天候情報を取得して表示するサンプル
 
 <img src="https://github.com/ddd503/Image-Resource/raw/master/image/weather_app_screen.png" width="200">
 
