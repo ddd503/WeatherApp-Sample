@@ -19,6 +19,7 @@ protocol WeatherViewPresenterInputs {
 }
 
 protocol WeatherViewPresenterOutputs: class {
+    init(presenter: WeatherViewPresenterInputs)
     func receivedWeatherInfo(_ info: WeatherInfo)
     func notFoundTodayWeatherInfo()
     func startIndicator()
